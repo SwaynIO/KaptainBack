@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topimage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "default": "Lorem ipsum dolor",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "default": "Lorem ipsum dolor",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "client": {
+      "type": "string",
+      "default": "Lorem",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "website_link": {
+      "type": "text",
+      "required": true,
+      "default": "#"
+    },
+    "fblink": {
+      "type": "text",
+      "required": true,
+      "default": "https://facebook.com"
+    },
+    "lklink": {
+      "type": "text",
+      "required": true,
+      "default": "https://linkedin.com"
+    },
+    "xlink": {
+      "type": "text",
+      "default": "https://x.com",
+      "required": true
+    },
+    "iglink": {
+      "type": "text",
+      "default": "https://instagram.com",
+      "required": true
+    }
+  }
+}

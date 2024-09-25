@@ -362,68 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAppApp extends Schema.CollectionType {
-  collectionName: 'apps';
-  info: {
-    singularName: 'app';
-    pluralName: 'apps';
-    displayName: 'App';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
-    isOnline: Attribute.Boolean & Attribute.DefaultTo<true>;
-    customLink: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::app.app', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::app.app', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiServiceService extends Schema.CollectionType {
-  collectionName: 'services';
-  info: {
-    singularName: 'service';
-    pluralName: 'services';
-    displayName: 'service';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    icon: Attribute.Media<'images'> & Attribute.Required;
-    title: Attribute.String & Attribute.Required & Attribute.DefaultTo<'Lorem'>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.DefaultTo<'Lorem ipsum dolor'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::service.service',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::service.service',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -850,6 +788,125 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiAppApp extends Schema.CollectionType {
+  collectionName: 'apps';
+  info: {
+    singularName: 'app';
+    pluralName: 'apps';
+    displayName: 'App';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    isOnline: Attribute.Boolean & Attribute.DefaultTo<true>;
+    customLink: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::app.app', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::app.app', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'Project';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    topimage: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
+    content: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    client: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem'>;
+    date: Attribute.Date & Attribute.Required;
+    website_link: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'#'>;
+    fblink: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://facebook.com'>;
+    lklink: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://linkedin.com'>;
+    xlink: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://x.com'>;
+    iglink: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://instagram.com'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    icon: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required & Attribute.DefaultTo<'Lorem'>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -860,8 +917,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::app.app': ApiAppApp;
-      'api::service.service': ApiServiceService;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -870,6 +925,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::app.app': ApiAppApp;
+      'api::project.project': ApiProjectProject;
+      'api::service.service': ApiServiceService;
     }
   }
 }
