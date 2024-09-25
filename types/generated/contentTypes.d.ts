@@ -816,6 +816,36 @@ export interface ApiAppApp extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    topimg: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -830,9 +860,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
   attributes: {
     topimage: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String &
-      Attribute.Required &
-      Attribute.DefaultTo<'Lorem ipsum dolor'>;
-    content: Attribute.Text &
       Attribute.Required &
       Attribute.DefaultTo<'Lorem ipsum dolor'>;
     image: Attribute.Media<'images'> & Attribute.Required;
@@ -855,6 +882,9 @@ export interface ApiProjectProject extends Schema.CollectionType {
     iglink: Attribute.Text &
       Attribute.Required &
       Attribute.DefaultTo<'https://instagram.com'>;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -926,6 +956,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::app.app': ApiAppApp;
+      'api::blog.blog': ApiBlogBlog;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
     }

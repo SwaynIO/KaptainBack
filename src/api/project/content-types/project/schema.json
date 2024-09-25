@@ -25,11 +25,6 @@
       "default": "Lorem ipsum dolor",
       "required": true
     },
-    "content": {
-      "type": "text",
-      "default": "Lorem ipsum dolor",
-      "required": true
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -70,6 +65,11 @@
     "iglink": {
       "type": "text",
       "default": "https://instagram.com",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "default": "Lorem ipsum dolor",
       "required": true
     }
   }
