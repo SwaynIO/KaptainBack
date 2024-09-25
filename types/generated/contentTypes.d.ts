@@ -846,6 +846,77 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactContact extends Schema.CollectionType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Lorem'>;
+    phone_number: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'0000000'>;
+    email: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'contact@contact.com'>;
+    content: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact.contact',
+      'oneToMany',
+      'api::contact.contact'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -957,6 +1028,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::app.app': ApiAppApp;
       'api::blog.blog': ApiBlogBlog;
+      'api::contact.contact': ApiContactContact;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
     }
