@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teams",
+  "info": {
+    "singularName": "team",
+    "pluralName": "teams",
+    "displayName": "Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "default": "John Doe",
+      "required": true
+    },
+    "position": {
+      "type": "string",
+      "default": "CEO of C2Agency",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "linkedin": {
+      "type": "text",
+      "default": "https://linkedin.com",
+      "required": true
+    },
+    "twitter": {
+      "type": "string",
+      "required": true,
+      "default": "https://x.com"
+    },
+    "instagram": {
+      "type": "string",
+      "required": true,
+      "default": "https://instagram.com"
+    }
+  }
+}

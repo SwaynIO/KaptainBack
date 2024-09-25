@@ -1008,6 +1008,43 @@ export interface ApiServiceService extends Schema.CollectionType {
   };
 }
 
+export interface ApiTeamTeam extends Schema.CollectionType {
+  collectionName: 'teams';
+  info: {
+    singularName: 'team';
+    pluralName: 'teams';
+    displayName: 'Team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'John Doe'>;
+    position: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'CEO of C2Agency'>;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    linkedin: Attribute.Text &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://linkedin.com'>;
+    twitter: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://x.com'>;
+    instagram: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'https://instagram.com'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::team.team', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Schema.CollectionType {
   collectionName: 'testimonials';
   info: {
@@ -1102,6 +1139,7 @@ declare module '@strapi/types' {
       'api::contact.contact': ApiContactContact;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
+      'api::team.team': ApiTeamTeam;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
