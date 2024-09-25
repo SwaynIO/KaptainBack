@@ -1014,6 +1014,7 @@ export interface ApiTeamTeam extends Schema.CollectionType {
     singularName: 'team';
     pluralName: 'teams';
     displayName: 'Team';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1035,6 +1036,9 @@ export interface ApiTeamTeam extends Schema.CollectionType {
     instagram: Attribute.String &
       Attribute.Required &
       Attribute.DefaultTo<'https://instagram.com'>;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lorem ipsum dolor'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

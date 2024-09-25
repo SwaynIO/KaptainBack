@@ -4,7 +4,8 @@
   "info": {
     "singularName": "team",
     "pluralName": "teams",
-    "displayName": "Team"
+    "displayName": "Team",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,12 +23,12 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "linkedin": {
       "type": "text",
@@ -43,6 +44,11 @@
       "type": "string",
       "required": true,
       "default": "https://instagram.com"
+    },
+    "content": {
+      "type": "richtext",
+      "default": "Lorem ipsum dolor",
+      "required": true
     }
   }
 }
