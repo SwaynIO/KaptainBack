@@ -917,6 +917,35 @@ export interface ApiContactContact extends Schema.CollectionType {
   };
 }
 
+export interface ApiDeviDevi extends Schema.CollectionType {
+  collectionName: 'devis';
+  info: {
+    singularName: 'devi';
+    pluralName: 'devis';
+    displayName: 'Devis';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    date: Attribute.Date &
+      Attribute.Required &
+      Attribute.DefaultTo<'2024-10-04'>;
+    email: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'email@example.com'>;
+    file: Attribute.Media<'files'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::devi.devi', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::devi.devi', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNewsletterNewsletter extends Schema.CollectionType {
   collectionName: 'newsletters';
   info: {
@@ -1174,6 +1203,7 @@ declare module '@strapi/types' {
       'api::app.app': ApiAppApp;
       'api::blog.blog': ApiBlogBlog;
       'api::contact.contact': ApiContactContact;
+      'api::devi.devi': ApiDeviDevi;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
