@@ -936,6 +936,9 @@ export interface ApiDeviDevi extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'email@example.com'>;
     file: Attribute.Media<'files'> & Attribute.Required;
+    reference: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'LOREM IPSUM DOLOR'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

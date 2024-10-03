@@ -29,6 +29,11 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "reference": {
+      "type": "string",
+      "required": true,
+      "default": "LOREM IPSUM DOLOR"
     }
   }
 }
